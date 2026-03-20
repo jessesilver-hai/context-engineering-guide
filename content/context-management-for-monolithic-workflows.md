@@ -62,7 +62,7 @@ Instead of one giant skill prompt that covers all phases, load only the current 
 
 **Implementation**: Structure the skill folder with per-phase instruction files. The orchestrator loads only the relevant phase file at each step.
 
-**The instruction budget problem**: Research shows frontier LLMs reliably follow approximately 150-200 instructions before quality degrades (Jaroslawicz et al., 2025). Claude Code's own system prompt already consumes a significant chunk of that budget before your CLAUDE.md is even read. Models exhibit distinct degradation patterns: *threshold decay* (near-perfect then cliff — reasoning models like o3, Gemini 2.5 Pro), *linear decay* (GPT-4.1, Claude Sonnet 4), and *exponential decay* (GPT-4o, Llama 4 Scout). At 500 instructions, even the best frontier models only achieve 68% accuracy.
+**The instruction budget problem**: Research shows frontier LLMs reliably follow approximately 150-200 instructions before quality degrades (Jaroslawicz et al., 2025). Claude Code's own system prompt already consumes a significant chunk of that budget before your CLAUDE.md is even read. Models exhibit distinct degradation patterns: *threshold decay* (near-perfect then cliff — reasoning models like o3, Gemini 2.5 Pro), *linear decay* (GPT-4.1, Claude Sonnet 4), and *exponential decay* (GPT-4o, Llama 4 Scout). At 500 instructions, frontier models only achieve 68% accuracy.
 
 **Implication**: CLAUDE.md files and skill descriptions should be ruthlessly pruned. Every instruction must earn its place.
 
@@ -74,7 +74,7 @@ Model the workflow as a directed graph:
 
 **When to use**: When your workflow has independent branches (e.g., "gather data from Slack" and "pull metrics from BQ" can run in parallel before "analyze results").
 
-**Claude Code implementation**: Multiple subagents can run concurrently, dramatically speeding up complex workflows. Each parallel branch gets its own isolated context window and only sends relevant results back to the orchestrator.
+**Claude Code implementation**: Multiple subagents can run concurrently, speeding up complex workflows. Each parallel branch gets its own isolated context window and only sends relevant results back to the orchestrator.
 
 ## Pattern 5: Observation Masking (The Complexity Trap)
 
@@ -98,7 +98,7 @@ For workflows that genuinely exceed any single context window, Recursive Languag
 
 **How it works**: The prompt is loaded into an external environment (e.g., Python REPL). The LLM writes code to peek at only necessary parts and delegates subtasks to new instances of itself through recursive self-invocation.
 
-**Results**: RLMs process inputs up to two orders of magnitude beyond model context windows without performance degradation, even at 10M+ tokens. They dramatically outperform vanilla frontier LLMs and common long-context scaffolds across diverse tasks with comparable cost.
+**Results**: RLMs process inputs up to two orders of magnitude beyond model context windows without performance degradation, even at 10M+ tokens. They outperform vanilla frontier LLMs and common long-context scaffolds across diverse tasks with comparable cost.
 
 **When to use**: When the input data itself is massive (entire codebases, years of logs, large document collections) — not just when the conversation gets long.
 
@@ -165,7 +165,7 @@ The workflow is still one command from the user's perspective. The context manag
 
 ### KV-Cache Optimization
 - Production agents exhibit input/output ratios of 100:1 or higher
-- KV-cache hit rate is the single most important metric for production agents
+- KV-cache hit rate is a key metric for production agents
 - Cached token cost is 10x lower than uncached ($0.30 vs $3.00 per million tokens)
 - Keep prompt prefixes stable — even a single-token difference invalidates the cache from that token onward
 - Place constant/rarely-changing information at the beginning of prompts; dynamic content at the end
@@ -199,13 +199,13 @@ As needle-question similarity decreases, performance degrades more significantly
 A follow-up study (arXiv:2602.07338, Feb 2026) identified intent mismatch as a key causal mechanism.
 
 ### Lost-in-the-Middle (Liu et al., 2023; TACL 2024)
-The foundational paper showing that LLMs miss information buried in the middle of long contexts, even when it's technically "in context." Performance is highest when relevant information occurs at the beginning or end of the input, and significantly degrades in the middle — even for explicitly long-context models. This means phase 3 results may be invisible to phase 7 even if they're all in the same conversation.
+The paper showing that LLMs miss information buried in the middle of long contexts, even when it's technically "in context." Performance is highest when relevant information occurs at the beginning or end of the input, and significantly degrades in the middle — even for explicitly long-context models. This means phase 3 results may be invisible to phase 7 even if they're all in the same conversation.
 
 ### Instruction-Following Degradation (Jaroslawicz et al., July 2025)
 "How Many Instructions Can LLMs Follow at Once?" (arXiv:2507.11538) — evaluated with IFScale benchmark using up to 500 keyword-inclusion instructions:
 - Primacy effects peak around 150-200 instructions, then level off
 - Three degradation patterns: threshold decay (reasoning models), linear decay (Claude Sonnet 4, GPT-4.1), exponential decay (GPT-4o, Llama 4 Scout)
-- At 500 instructions, even the best frontier models only achieve 68% accuracy
+- At 500 instructions, frontier models only achieve 68% accuracy
 - At 300+ instructions, models shift from selective instruction satisfaction to uniform failure
 
 ### The Complexity Trap (Lindenbauer et al., NeurIPS 2025)
@@ -243,7 +243,7 @@ arXiv:2512.24601 — treat the prompt as an object in an external environment:
 - **Effective Context Engineering for AI Agents** (Sept 2025): System prompts should use clear, direct language at the right altitude. Tool descriptions should be written as if describing to a new hire. Implement pagination, filtering, and truncation with sensible defaults. Tool responses capped at 25K tokens.
 - **Effective Harnesses for Long-Running Agents** (Nov 2025): Two-agent harness — an initializer agent sets up the environment (log file + initial commit), then a coding agent works in subsequent sessions making incremental progress. Best approach: commit progress to git with descriptive messages and write summaries to a progress file for cross-session continuity.
 - **Agent Skills** (2025): Progressive disclosure is the core design principle. Skills are organized folders of instructions, scripts, and resources that agents discover and load dynamically based on description matching.
-- **Writing Effective Tools for Agents** (2025): Prompt-engineering tool descriptions is one of the most effective methods for improving tool performance. Descriptions are loaded into agents' context and steer tool-calling behavior.
+- **Writing Effective Tools for Agents** (2025): Prompt-engineering tool descriptions is an effective method for improving tool performance. Descriptions are loaded into agents' context and steer tool-calling behavior.
 
 ### OpenAI (Codex / Agents SDK)
 - **Codex**: Operates in isolated cloud sandboxes with ~192K context window (experimental 1M with GPT-5.4). Uses AGENTS.md files for persistent instructions and Skills for reusable workflow bundles.
@@ -257,7 +257,7 @@ arXiv:2512.24601 — treat the prompt as an object in an external environment:
 
 ### Manus
 - **Context Engineering Lessons** (rebuilt framework 4 times):
-  - KV-cache hit rate is the #1 production metric (100:1 input/output ratio)
+  - KV-cache hit rate is a top production metric (100:1 input/output ratio)
   - File system as external memory — unlimited, persistent, agent-manipulable
   - Attention management through recitation (rewriting todo lists)
   - Preserve failure information — seeing its own mistakes helps the agent avoid repeating them
@@ -301,7 +301,7 @@ arXiv:2512.24601 — treat the prompt as an object in an external environment:
 
 ## The "Context Stuffing" Anti-Pattern
 
-Context stuffing — shoving everything into the prompt — is the single largest source of wasted compute, hallucinated outputs, and unreliable agent behavior in production systems. With ever-larger context windows, the temptation is to "shove it all in," but:
+Context stuffing — shoving everything into the prompt — is a major source of wasted compute, hallucinated outputs, and unreliable agent behavior in production systems. With ever-larger context windows, the temptation is to "shove it all in," but:
 
 - **Token bloat != signal**: More text means more room for distractors. LLMs hedge; answers go fuzzy.
 - **Lost-in-the-middle**: Models recall the beginning and end far more reliably than anything buried in the middle.
@@ -320,7 +320,7 @@ Context stuffing — shoving everything into the prompt — is the single larges
 
 5. **Observation Masking**: Target environment observations only, preserving action and reasoning history in full. Agent turns heavily skew toward observation (tool outputs), which can be dropped without losing the reasoning thread.
 
-6. **Recursive Decomposition (RLMs)**: For truly massive inputs, let the LLM programmatically construct sub-tasks and recursively invoke itself over subsets, treating the prompt as an external environment object.
+6. **Recursive Decomposition (RLMs)**: For very large inputs, let the LLM programmatically construct sub-tasks and recursively invoke itself over subsets, treating the prompt as an external environment object.
 
 ---
 

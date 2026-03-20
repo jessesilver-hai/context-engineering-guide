@@ -156,7 +156,7 @@ Every token in the context window competes with conversation history, other skil
 2. **Offload to the filesystem.** Move older tool results, large datasets, and intermediate state to files. Claude can read them back when needed without consuming persistent context.
 3. **Use sub-agents for isolation.** Fork context-heavy tasks to sub-agents (`context: fork`). Their work happens in a separate context window, and only the summary returns to the main conversation.
 4. **Start fresh for each major task.** Use `/clear` between unrelated tasks to prevent context drift. The CLAUDE.md and auto memory reload automatically.
-5. **Don't explain what Claude already knows.** The #1 anti-pattern in skill authoring. Claude understands programming concepts, common libraries, and standard patterns. Only add context Claude doesn't have — your specific schemas, your conventions, your edge cases.
+5. **Don't explain what Claude already knows.** A common anti-pattern in skill authoring. Claude understands programming concepts, common libraries, and standard patterns. Only add context Claude doesn't have — your specific schemas, your conventions, your edge cases.
 6. **Structure reference files with TOCs.** For files >100 lines, add a table of contents at the top so Claude can see scope even when previewing with partial reads.
 
 Sources: [Skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices) | [Agent design patterns](https://rlancemartin.github.io/2026/01/09/agent_design/) | [Optimizing Agentic Coding](https://aimultiple.com/agentic-coding)
@@ -190,7 +190,7 @@ The command is a **conditional endpoint**, not a waypoint. Most workflows should
 
 **The anti-pattern is not writing monolithic commands.** It's confusing "I do this repeatedly" with "this needs to be a command." Repetition signals a skill. A command is only warranted when the user must control *when* and *with what parameters* the workflow runs, and the workflow has side effects.
 
-**From the Anthropic PDF (p.15):** "We've found that the most effective skill creators iterate on a single challenging task until Claude succeeds, then extract the winning approach into a skill." — conversation -> skill, no command in the middle.
+**From the Anthropic PDF (p.15):** "We've found that effective skill creators iterate on a single challenging task until Claude succeeds, then extract the winning approach into a skill." — conversation -> skill, no command in the middle.
 
 ### Anti-Patterns
 
@@ -268,7 +268,7 @@ Skill (reference knowledge, loaded on-demand)
 
 **3. Composable skill chains (nested skills).** Claude loads skill A -> which invokes skill B for data -> which invokes skill C for formatting. Works well for the `playbook` -> `database` -> `drive` pattern. Trade-off: nested skills are additive in context — 3 loaded skills = 1500+ lines of instructions competing for attention.
 
-**4. Agent + skill composition (the best pattern for complex workflows).** Thin command -> agent -> skills. The agent runs in isolation, consults skills as reference, and returns only the final result. This is the recommended pattern for any workflow exceeding 30 lines of instructions.
+**4. Agent + skill composition (recommended for complex workflows).** Thin command -> agent -> skills. The agent runs in isolation, consults skills as reference, and returns only the final result. This is the recommended pattern for any workflow exceeding 30 lines of instructions.
 
 **5. Context files for universal behavior.** Tool routing rules, source-of-truth hierarchies, write policies — these apply to every interaction. They belong in CLAUDE.md, not repeated in every command or skill.
 

@@ -86,7 +86,7 @@ OpenSage integrates self-generated agent topology, dynamically-created tooling, 
 2. **Tooling system** — what tools are available and when
 3. **Memory system** — what state persists across steps
 
-**Results:** Ranked #1 on CyberGym and Terminal-Bench 2.0 leaderboards, achieving a resolved rate >20% higher than OpenHands with the same backbone model.
+**Results:** Ranked first on CyberGym and Terminal-Bench 2.0 leaderboards, achieving a resolved rate >20% higher than OpenHands with the same backbone model.
 
 **Relevance:** OpenSage demonstrates that auto-tool-creation is feasible and effective. The gap is that it's a research system, not integrated into Claude Code's skill/hook/agent architecture.
 
@@ -245,7 +245,7 @@ The key insight: **the bottleneck isn't detecting slow operations — it's someo
 ### Phase 5: APC-Style Plan Caching
 - Extract plan templates from successful agent executions
 - Store and reuse for similar future tasks
-- Highest effort, biggest payoff for repeated workflows
+- High effort, high payoff for repeated workflows
 
 ---
 

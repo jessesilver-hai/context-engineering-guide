@@ -50,7 +50,7 @@ The Claude Code team updates their CLAUDE.md multiple times per week. Entries ar
 
 ## 3. Verification Loops Are the Highest-Leverage Pattern
 
-Boris calls this "probably the most important thing." Give Claude the ability to verify its own work. This alone improves output quality 2-3x.
+Boris emphasizes this pattern above others. Give Claude the ability to verify its own work. This alone can improve output quality 2-3x.
 
 **Implementation by domain:**
 - **CLI/backend:** Run `npm test`, `npm run typecheck`, `npm run lint` after implementation

@@ -197,7 +197,7 @@ Sources: Handshake `claude-code-marketplace` analysis
 
 ## 4. The Agent-Skill-Command Split (Critical Design Decision)
 
-This is the most important structural question: what goes in an agent vs. a skill vs. a command?
+A key structural question: what goes in an agent vs. a skill vs. a command?
 
 ### The Principle
 

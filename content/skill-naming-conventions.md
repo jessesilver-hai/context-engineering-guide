@@ -39,7 +39,7 @@ Sources: [Agent Skills Spec](https://agentskills.io/specification) | [Skill auth
 
 ## 2. The Name vs. Description Split
 
-**This is the single most important insight:** The name is for humans. The description is for Claude.
+**The key distinction:** The name is for humans. The description is for Claude.
 
 ### How Claude selects skills at runtime
 
@@ -222,7 +222,7 @@ Skills can call other skills as subskills via the Skill tool (only restriction: 
 
 ### Parent/child naming patterns
 
-**Pattern 1: Prefix + role suffix** (most common, your existing pattern)
+**Pattern 1: Prefix + role suffix** (common, established pattern)
 ```
 heteronym-qc           # parent
 heteronym-qc-score     # child

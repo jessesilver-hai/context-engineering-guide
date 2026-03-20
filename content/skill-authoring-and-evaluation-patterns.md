@@ -62,7 +62,7 @@ compatibility:                      # Optional, rarely needed
 - **Keep SKILL.md under 500 lines.** If approaching this limit, add hierarchy — extract sections into `references/*.md` with clear pointers about when to read them.
 - **Use imperative form.** "Read the file" not "You should read the file."
 - **Explain the why, not just the what.** LLMs respond better to understanding reasoning than to rigid directives. Instead of "ALWAYS use format X", explain why format X matters — the model will follow more reliably and generalize better.
-- **Include examples.** Claude performs dramatically better with concrete input/output pairs than abstract rules. Format them clearly:
+- **Include examples.** Claude performs notably better with concrete input/output pairs than abstract rules. Format them clearly:
   ```markdown
   **Example 1:**
   Input: Added user authentication with JWT tokens
@@ -149,7 +149,7 @@ For slash commands, also set `disable-model-invocation: true` so Claude won't in
 
 ## 5. Iterative Skill Development
 
-Skills improve through test-evaluate-revise cycles. The number of iterations is the biggest predictor of skill quality.
+Skills improve through test-evaluate-revise cycles. Iteration count is a strong predictor of skill quality.
 
 ### The Core Loop
 
@@ -211,7 +211,7 @@ After a skill is stable, its description can be systematically optimized for tri
 
 ### Eval Query Quality
 
-The most valuable negative test cases are near-misses, not obviously irrelevant queries. "Write a fibonacci function" as a negative test for a PDF skill is too easy. The negative cases should be genuinely tricky — adjacent domains, ambiguous phrasing where keyword matching would trigger but shouldn't.
+Valuable negative test cases are near-misses, not obviously irrelevant queries. "Write a fibonacci function" as a negative test for a PDF skill is too easy. The negative cases should be genuinely tricky — adjacent domains, ambiguous phrasing where keyword matching would trigger but shouldn't.
 
 ---
 
@@ -240,7 +240,7 @@ Does the user explicitly invoke it?
 | Overfitting to test cases | Skill works for 3 examples, fails on real usage | Generalize from feedback patterns, not specific fixes |
 | Rigid MUST/NEVER without reasoning | Brittle, doesn't transfer to novel cases | Explain the why — model follows reasoning better than rules |
 | Description duplicates body content | Wastes the always-in-context budget | Description = when to trigger. Body = how to execute. |
-| Excluding large reference files | Loses the most valuable context | Use `[GREP-ONLY]` headers instead of exclusion |
+| Excluding large reference files | Loses useful context | Use `[GREP-ONLY]` headers instead of exclusion |
 | Creating parallel files for one topic | Confuses routing, wastes context | Merge into single file organized by subtopic |
 
 ---

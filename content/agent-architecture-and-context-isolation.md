@@ -157,7 +157,7 @@ WITH ISOLATION (subagents):
 └─────────┘  └─────────────┘  └─────────┘
 ```
 
-Each subagent gets its own fresh context window. All intermediate tool calls, dead ends, and raw data stay inside the subagent. Only the final summary returns to the parent. This is the single most effective mitigation for context rot in agent workflows.
+Each subagent gets its own fresh context window. All intermediate tool calls, dead ends, and raw data stay inside the subagent. Only the final summary returns to the parent. This is a well-tested mitigation for context rot in agent workflows.
 
 **Quantified benefit:** Anthropic's multi-agent research system with Claude Opus 4 as lead and Claude Sonnet 4 subagents outperformed single-agent Claude Opus 4 by 90.2% on internal research evaluations. Token usage explains ~80% of the variance -- multi-agent systems work mainly because they help spend enough tokens to solve the problem while keeping each agent's context clean.
 
@@ -339,7 +339,7 @@ The combination of memory files, context compaction, and file checkpointing enab
 
 ### Pattern 1: Orchestrator-Worker (Hub and Spoke)
 
-The most common pattern. A lead agent decomposes queries, delegates to specialist workers, and synthesizes results.
+A common pattern. A lead agent decomposes queries, delegates to specialist workers, and synthesizes results.
 
 ```
          ┌──────────────┐
@@ -510,7 +510,7 @@ Best for: Exploring alternative approaches, A/B testing
 
 ### Checkpoint and Serialization Patterns
 
-**LangGraph** offers the most mature checkpoint system:
+**LangGraph** offers a well-developed checkpoint system:
 - State persisted to a database using a checkpointer after each node execution
 - `thread_id` provides isolation between user threads
 - Time Travel feature enables replaying from any checkpoint for debugging

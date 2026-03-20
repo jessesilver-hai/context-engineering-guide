@@ -133,13 +133,13 @@ Instead of pre-loading all context, agents incrementally discover information th
 ### C. Context Processing and Optimization
 
 #### C1. Context Compression Techniques
-Reducing token count while preserving essential information. Includes prompt compression (SelectiveContext, LLMLingua, QwenLong-CPRS), token pruning, summarization-based compression, and extraction-based methods. A NAACL 2025 survey formalized the taxonomy.
+Reducing token count while preserving relevant information. Includes prompt compression (SelectiveContext, LLMLingua, QwenLong-CPRS), token pruning, summarization-based compression, and extraction-based methods. A NAACL 2025 survey formalized the taxonomy.
 
 - **Key authorities:** Microsoft Research, Tsinghua University, NAACL 2025
 - **Best single resource:** [Prompt Compression for Large Language Models: A Survey (NAACL 2025)](https://aclanthology.org/2025.naacl-long.368.pdf)
 
 #### C2. Context Summarization and Compaction
-Condensing long conversation histories or agent trajectories into compact summaries that preserve critical decisions, findings, and state. Used when context windows fill up. Includes recursive summarization, hierarchical summarization, and Claude Code's auto-compaction (triggers at 95% context usage).
+Condensing long conversation histories or agent trajectories into compact summaries that preserve decisions, findings, and state. Used when context windows fill up. Includes recursive summarization, hierarchical summarization, and Claude Code's auto-compaction (triggers at 95% context usage).
 
 - **Key authorities:** Anthropic, LangChain, OpenAI
 - **Best single resource:** [LangChain -- Context Management for Deep Agents](https://blog.langchain.com/context-management-for-deepagents/)
@@ -277,7 +277,7 @@ How agents break complex goals into sub-tasks, each requiring its own context as
 - **Best single resource:** [Harrison Chase on Deep Agents (Sequoia)](https://sequoiacap.com/podcast/context-engineering-our-way-to-long-horizon-agents-langchains-harrison-chase/)
 
 #### F5. Long-Horizon Agent Context Management
-Maintaining coherent context across extended agent runs (hours to days). Combines compaction, structured note-taking, memory tools, and sub-agent delegation. Claude playing Pokemon is the canonical example: maintaining objectives, maps, and achievements across thousands of steps.
+Maintaining coherent context across extended agent runs (hours to days). Combines compaction, structured note-taking, memory tools, and sub-agent delegation. Claude playing Pokemon is a notable example: maintaining objectives, maps, and achievements across thousands of steps.
 
 - **Key authorities:** Anthropic, LangChain
 - **Best single resource:** [LangChain -- Context Management for Deep Agents](https://blog.langchain.com/context-management-for-deepagents/)
@@ -349,7 +349,7 @@ Standardized evaluations: GAIA (general AI assistants), SWE-Bench (code agents),
 ### I. Security, Safety, and Governance
 
 #### I1. Prompt Injection and Context Security
-The #1 vulnerability in OWASP's 2025 Top 10 for LLMs. Includes direct injection (overriding system prompts), indirect injection (poisoning retrieved documents), and RAG poisoning (5 crafted documents can manipulate responses 90% of the time). No complete fix exists; defense-in-depth is the only viable strategy.
+Ranked first in OWASP's 2025 Top 10 for LLMs. Includes direct injection (overriding system prompts), indirect injection (poisoning retrieved documents), and RAG poisoning (5 crafted documents can manipulate responses 90% of the time). No complete fix exists; defense-in-depth is the only viable strategy.
 
 - **Key authorities:** OWASP, Microsoft Security, Lakera
 - **Best single resource:** [OWASP -- LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)
@@ -383,7 +383,7 @@ Managing the financial cost of context: input vs output token pricing (output co
 - **Best single resource:** [Introl -- Cost Per Token Analysis](https://introl.com/blog/cost-per-token-llm-inference-optimization)
 
 #### J2. Tokenization and Token Counting
-Understanding how text maps to tokens: BPE, SentencePiece, WordPiece algorithms. Accurate token counting is essential for context budgeting. Different models use different tokenizers, so the same text has different token counts across providers.
+Understanding how text maps to tokens: BPE, SentencePiece, WordPiece algorithms. Accurate token counting matters for context budgeting. Different models use different tokenizers, so the same text has different token counts across providers.
 
 - **Key authorities:** Hugging Face, Google (SentencePiece), OpenAI (tiktoken)
 - **Best single resource:** [Hugging Face -- Tokenization Algorithms](https://huggingface.co/docs/transformers/tokenizer_summary)
@@ -503,7 +503,7 @@ Treating context engineering as a first-class software discipline: spec-driven d
 |--------|------------|--------------|
 | **Andrej Karpathy** | Former OpenAI/Tesla | Popularized the term; defined context engineering as "the delicate art and science of filling the context window" |
 | **Tobi Lutke** | Shopify CEO | Coined the mainstream usage; catalyzed adoption across the tech industry |
-| **Harrison Chase** | LangChain CEO | Built the primary framework ecosystem; authored the four-strategy taxonomy (write/select/compress/isolate); advocates "deep agents" and harness engineering |
+| **Harrison Chase** | LangChain CEO | Built a widely-used framework ecosystem; authored the four-strategy taxonomy (write/select/compress/isolate); advocates "deep agents" and harness engineering |
 | **Simon Willison** | Independent (Django co-creator) | Prolific blogger; agentic engineering patterns; early advocate for the term sticking |
 | **Chip Huyen** | Author, AI Engineering | Production LLM systems design; "AI Engineering" book covers context as first-class concern |
 | **Lilian Weng** | OpenAI | Foundational "LLM-powered Autonomous Agents" survey covering memory, planning, and tool use |
@@ -515,14 +515,14 @@ Treating context engineering as a first-class software discipline: spec-driven d
 
 | Organization | Role in Context Engineering |
 |-------------|---------------------------|
-| **Anthropic** | Published the definitive practitioner guide; created MCP; built Claude Code's context architecture (Skills, CLAUDE.md, subagents); drives the field operationally |
-| **LangChain** | Built the dominant framework ecosystem (LangChain, LangGraph, LangMem, LangSmith); published the four-strategy taxonomy; maintains Bigtool and context engineering tutorials |
+| **Anthropic** | Published a widely-referenced practitioner guide; created MCP; built Claude Code's context architecture (Skills, CLAUDE.md, subagents) |
+| **LangChain** | Built a widely-adopted framework ecosystem (LangChain, LangGraph, LangMem, LangSmith); published the four-strategy taxonomy; maintains Bigtool and context engineering tutorials |
 | **OpenAI** | Assistants API/Threads for managed context; function calling standards; Realtime API context management; o-series models pushing inference-time reasoning |
 | **Google DeepMind** | Largest context windows (Gemini, 2M+ tokens); context caching pioneer; A2A protocol; long-context research |
 | **Chroma** | Context Rot research; foundational work on understanding context degradation |
 | **Zep** | Agent memory platform; temporal knowledge graphs (Graphiti); context engineering as core product thesis |
 | **Letta (MemGPT)** | OS-inspired virtual context management; pioneered the "LLMs as operating systems" paradigm |
-| **Meta AI** | Original RAG paper; Llama models with massive context windows; open-source long-context research |
+| **Meta AI** | Original RAG paper; Llama models with large context windows; open-source long-context research |
 | **Linux Foundation (AAIF)** | Governance of MCP and A2A protocols; standardizing agent interoperability |
 | **DAIR.AI** | Prompt Engineering Guide; community-maintained reference covering context engineering fundamentals |
 
@@ -533,7 +533,7 @@ Treating context engineering as a first-class software discipline: spec-driven d
 ### Practitioner Guides
 
 1. **Anthropic -- "Effective Context Engineering for AI Agents"** (Sep 2025)
-   The single most important practitioner reference. Covers system prompts, tools, examples, context retrieval, progressive disclosure, compaction, note-taking, and sub-agents.
+   A widely-referenced practitioner guide. Covers system prompts, tools, examples, context retrieval, progressive disclosure, compaction, note-taking, and sub-agents.
    https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
 
 2. **LangChain -- "Context Engineering for Agents"** (Jun 2025)
@@ -555,7 +555,7 @@ Treating context engineering as a first-class software discipline: spec-driven d
 ### Academic Surveys
 
 6. **Mei et al. -- "A Survey of Context Engineering for Large Language Models"** (Jul 2025, arXiv:2507.13334)
-   The definitive academic survey. 1,400+ papers analyzed. Establishes formal taxonomy: context retrieval/generation, context processing, context management, and system implementations (RAG, memory, tools, multi-agent).
+   A broad academic survey. 1,400+ papers analyzed. Establishes formal taxonomy: context retrieval/generation, context processing, context management, and system implementations (RAG, memory, tools, multi-agent).
    https://arxiv.org/abs/2507.13334
 
 7. **"Prompt Compression for Large Language Models: A Survey"** (NAACL 2025, Selected Oral)

@@ -113,9 +113,9 @@ Examples:
 
 LLMs don't treat all positions in the context window equally. Performance follows a U-shaped curve: strong attention at the start, strong at the end, weak in the middle.
 
-**Implication for CLAUDE.md:** The most critical rules should be near the top or bottom. Mid-file rules are in the attention trough. If a rule keeps being ignored despite being in CLAUDE.md, try moving it to the top.
+**Implication for CLAUDE.md:** High-priority rules should be near the top or bottom. Mid-file rules are in the attention trough. If a rule keeps being ignored despite being in CLAUDE.md, try moving it to the top.
 
-**Implication for skills:** SKILL.md content that's critical for correct behavior should be near the top of the file, not buried in the middle of a 400-line document.
+**Implication for skills:** SKILL.md content that matters for correct behavior should be near the top of the file, not buried in the middle of a 400-line document.
 
 Source: Liu et al., "Lost in the Middle: How Language Models Use Long Contexts" (Stanford, 2023). >30% performance drop for mid-context information.
 
