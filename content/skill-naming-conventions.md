@@ -1,6 +1,6 @@
 ---
 title: "Skill Naming Conventions"
-description: "Comprehensive guide to naming skills (slash commands / SKILL.md files) in Claude Code -- compiled from Anthropic's official spec, platform docs, engineering blog, community repos, and practitioner guides."
+description: "Guide to naming skills (slash commands / SKILL.md files) in Claude Code -- compiled from Anthropic's official spec, platform docs, engineering blog, community repos, and practitioner guides."
 tags:
   - context-engineering
   - claude-code
@@ -8,7 +8,7 @@ tags:
 
 # Skill Naming Conventions for Claude Code
 
-Comprehensive guide to naming skills (slash commands / SKILL.md files) — compiled from Anthropic's official spec, platform docs, engineering blog, `anthropics/skills` repo, community repos, and practitioner guides.
+Guide to naming skills (slash commands / SKILL.md files) — compiled from Anthropic's official spec, platform docs, engineering blog, `anthropics/skills` repo, community repos, and practitioner guides.
 
 ---
 

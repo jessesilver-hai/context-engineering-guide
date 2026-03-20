@@ -169,7 +169,7 @@ skills/
       job-open.md
 ```
 
-**No agent, no MCP.** The entire value is reference knowledge that Claude auto-loads when topics match. SKILL.md is the table of contents.
+**No agent, no MCP.** The value is reference knowledge that Claude auto-loads when topics match. SKILL.md is the table of contents.
 
 **When to use:** Internal product documentation, API references, architecture guides, onboarding knowledge.
 

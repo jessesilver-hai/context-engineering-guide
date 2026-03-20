@@ -1,28 +1,28 @@
 ---
-title: "Context Engineering: The Complete Map of the Field"
-description: "A comprehensive guide covering 50+ areas across 12 categories of context engineering for LLMs — from foundational design to emerging frontiers."
+title: "Context Engineering: A Map of the Field"
+description: "A guide covering 50+ areas across 12 categories of context engineering for LLMs — from foundational design to emerging frontiers."
 tags:
   - context-engineering
   - index
   - llm
 ---
 
-# Context Engineering: The Complete Map of the Field
+# Context Engineering: A Map of the Field
 
 > **Last updated:** 2026-03-08
-> **Scope:** Every identifiable area, sub-discipline, and emerging topic within context engineering for LLMs.
+> **Scope:** Areas, sub-disciplines, and emerging topics within context engineering for LLMs.
 
 ---
 
 ## What Is Context Engineering?
 
-Context engineering is the discipline of designing, curating, assembling, and managing everything an LLM sees at inference time -- system prompts, retrieved documents, memory, tool definitions, conversation history, state information, examples, and structured data -- to maximize the probability that the model produces the desired output.
+Context engineering is the discipline of designing, curating, assembling, and managing what an LLM sees at inference time -- system prompts, retrieved documents, memory, tool definitions, conversation history, state information, examples, and structured data -- to maximize the probability that the model produces the desired output.
 
 The term gained mainstream adoption in mid-2025, popularized by **Tobi Lutke** (Shopify CEO), who [tweeted](https://x.com/tobi/status/1935533422589399127): "I really like the term 'context engineering' over prompt engineering. It describes the core skill better: the art of providing all the context for the task to be plausibly solvable by the LLM." **Andrej Karpathy** immediately endorsed it, [defining it as](https://x.com/karpathy/status/1937902205765607626) "the delicate art and science of filling the context window with just the right information for the next step."
 
-Unlike prompt engineering, which focuses on crafting a single instruction, context engineering is a systems discipline. It encompasses the entire information architecture surrounding the model: what data reaches it, when, in what format, how much, and through what retrieval/memory/tool pipelines. It treats the context window as a precious, finite resource (analogous to RAM) that must be actively managed.
+Unlike prompt engineering, which focuses on crafting a single instruction, context engineering is a systems discipline. It encompasses the information architecture surrounding the model: what data reaches it, when, in what format, how much, and through what retrieval/memory/tool pipelines. It treats the context window as a precious, finite resource (analogous to RAM) that must be actively managed.
 
-The field was formalized academically in July 2025 with a [comprehensive survey of 1,400+ papers](https://arxiv.org/abs/2507.13334) (Mei et al.), and operationally by Anthropic's influential [engineering blog post](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) in September 2025, which became the de facto practitioner reference.
+The field was formalized academically in July 2025 with a [comprehensive survey of 1,400+ papers](https://arxiv.org/abs/2507.13334) (Mei et al.), and operationally by Anthropic's influential [engineering blog post](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) in September 2025, which became a widely-used practitioner reference.
 
 ---
 
@@ -37,12 +37,12 @@ This guide contains detailed articles on specific areas of context engineering:
 - [[plugin-and-marketplace-directory-structure|Plugin and Marketplace Directory Structure]] — How to organize a Claude Code plugin marketplace
 - [[skill-and-memory-architecture|Skill and Memory Architecture]] — Best practices for structuring skills, memory, and context
 - [[skill-authoring-and-evaluation-patterns|Skill Authoring and Evaluation Patterns]] — Writing effective skills and iteratively improving them
-- [[skill-naming-conventions|Skill Naming Conventions]] — Comprehensive guide to naming skills
+- [[skill-naming-conventions|Skill Naming Conventions]] — Guide to naming skills
 - [[workflow-patterns-from-the-creator|Workflow Patterns from the Creator]] — Actionable patterns from the Head of Claude Code
 
 ---
 
-## Part 1: Comprehensive Area Index
+## Part 1: Area Index
 
 ### A. Foundational Context Design
 
@@ -87,7 +87,7 @@ Strategic placement of information within the context window to maximize model a
 ### B. Context Retrieval and Knowledge Integration
 
 #### B1. Retrieval-Augmented Generation (RAG)
-The foundational pattern of retrieving external documents at inference time and injecting them into the context window to ground model responses. Includes the full RAG lifecycle: indexing, chunking, embedding, retrieval, re-ranking, and generation.
+The core pattern of retrieving external documents at inference time and injecting them into the context window to ground model responses. Includes the full RAG lifecycle: indexing, chunking, embedding, retrieval, re-ranking, and generation.
 
 - **Key authorities:** Meta AI (Lewis et al., original RAG paper), LlamaIndex, LangChain
 - **Best single resource:** [RAGFlow: From RAG to Context -- A 2025 Year-End Review](https://ragflow.io/blog/rag-review-2025-from-rag-to-context)
@@ -506,7 +506,7 @@ Treating context engineering as a first-class software discipline: spec-driven d
 | **Harrison Chase** | LangChain CEO | Built a widely-used framework ecosystem; authored the four-strategy taxonomy (write/select/compress/isolate); advocates "deep agents" and harness engineering |
 | **Simon Willison** | Independent (Django co-creator) | Prolific blogger; agentic engineering patterns; early advocate for the term sticking |
 | **Chip Huyen** | Author, AI Engineering | Production LLM systems design; "AI Engineering" book covers context as first-class concern |
-| **Lilian Weng** | OpenAI | Foundational "LLM-powered Autonomous Agents" survey covering memory, planning, and tool use |
+| **Lilian Weng** | OpenAI | "LLM-powered Autonomous Agents" survey covering memory, planning, and tool use |
 | **Sebastian Raschka** | Lightning AI | State-of-LLMs annual reviews; practical context optimization guidance |
 | **Leonie Monigatti** | Weaviate | Clear explainers on memory architectures, MemGPT, and RAG patterns |
 | **Preston Rasmussen** | Zep | Temporal knowledge graph architecture for agent memory |
@@ -519,16 +519,16 @@ Treating context engineering as a first-class software discipline: spec-driven d
 | **LangChain** | Built a widely-adopted framework ecosystem (LangChain, LangGraph, LangMem, LangSmith); published the four-strategy taxonomy; maintains Bigtool and context engineering tutorials |
 | **OpenAI** | Assistants API/Threads for managed context; function calling standards; Realtime API context management; o-series models pushing inference-time reasoning |
 | **Google DeepMind** | Largest context windows (Gemini, 2M+ tokens); context caching pioneer; A2A protocol; long-context research |
-| **Chroma** | Context Rot research; foundational work on understanding context degradation |
+| **Chroma** | Context Rot research; work on understanding context degradation |
 | **Zep** | Agent memory platform; temporal knowledge graphs (Graphiti); context engineering as core product thesis |
-| **Letta (MemGPT)** | OS-inspired virtual context management; pioneered the "LLMs as operating systems" paradigm |
+| **Letta (MemGPT)** | OS-inspired virtual context management; introduced the "LLMs as operating systems" paradigm |
 | **Meta AI** | Original RAG paper; Llama models with large context windows; open-source long-context research |
 | **Linux Foundation (AAIF)** | Governance of MCP and A2A protocols; standardizing agent interoperability |
 | **DAIR.AI** | Prompt Engineering Guide; community-maintained reference covering context engineering fundamentals |
 
 ---
 
-## Part 3: Key Resources (Top 15 Definitive References)
+## Part 3: Key Resources (15 References)
 
 ### Practitioner Guides
 
@@ -545,11 +545,11 @@ Treating context engineering as a first-class software discipline: spec-driven d
    https://blog.langchain.com/context-management-for-deepagents/
 
 4. **Claude Code Documentation -- Skills and Best Practices**
-   Definitive reference for Claude Code's context architecture: CLAUDE.md, Skills, hooks, subagents, and context budget management.
+   Reference for Claude Code's context architecture: CLAUDE.md, Skills, hooks, subagents, and context budget management.
    https://code.claude.com/docs/en/skills
 
 5. **Prompting Guide -- Context Engineering Guide**
-   Community-maintained comprehensive overview with cross-provider coverage.
+   Community-maintained overview with cross-provider coverage.
    https://www.promptingguide.ai/guides/context-engineering-guide
 
 ### Academic Surveys
@@ -559,21 +559,21 @@ Treating context engineering as a first-class software discipline: spec-driven d
    https://arxiv.org/abs/2507.13334
 
 7. **"Prompt Compression for Large Language Models: A Survey"** (NAACL 2025, Selected Oral)
-   Comprehensive taxonomy of compression techniques: selection-based, extraction-based, and generation-based methods.
+   Taxonomy of compression techniques: selection-based, extraction-based, and generation-based methods.
    https://aclanthology.org/2025.naacl-long.368.pdf
 
 8. **"Memory in the Age of AI Agents: A Survey"** (Dec 2025, arXiv:2512.13564)
    Systematic survey of agent memory architectures: factual, experiential, and working memory with formation, evolution, and retrieval dynamics.
    https://arxiv.org/abs/2512.13564
 
-### Foundational Research
+### Research
 
 9. **Chroma Research -- "Context Rot"** (Jul 2025)
    Empirical study of 18 frontier models showing performance degradation with increasing context length, even on simple tasks. Defines the context rot phenomenon.
    https://research.trychroma.com/context-rot
 
 10. **Packer et al. -- "MemGPT: Towards LLMs as Operating Systems"** (Oct 2023)
-    Pioneered virtual context management with OS-inspired memory tiering. Foundation for the Letta framework.
+    Introduced virtual context management with OS-inspired memory tiering. Basis for the Letta framework.
     https://arxiv.org/abs/2310.08560
 
 11. **"Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models"** (Oct 2025, arXiv:2510.04618)
@@ -583,7 +583,7 @@ Treating context engineering as a first-class software discipline: spec-driven d
 ### Protocol Specifications
 
 12. **Model Context Protocol (MCP) -- Specification** (Nov 2025)
-    The universal standard for LLM-to-tool communication. JSON-RPC 2.0, client-server architecture, now governed by the Linux Foundation.
+    An open standard for LLM-to-tool communication. JSON-RPC 2.0, client-server architecture, now governed by the Linux Foundation.
     https://modelcontextprotocol.io/specification/2025-11-25
 
 13. **Agent-to-Agent (A2A) Protocol** (2025)
@@ -700,4 +700,4 @@ Context Engineering
 
 ---
 
-*This index covers 50+ distinct areas across 12 categories. The field is evolving rapidly -- Gartner predicts 40% of enterprise apps will feature AI agents by late 2026, all requiring robust context engineering. The discipline sits at the intersection of information retrieval, systems engineering, cognitive science, and software architecture.*
+*This index covers 50+ areas across 12 categories. The discipline sits at the intersection of information retrieval, systems engineering, cognitive science, and software architecture.*

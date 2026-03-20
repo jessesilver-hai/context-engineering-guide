@@ -8,7 +8,7 @@ tags:
 
 # Workflow Patterns from the Creator of Claude Code
 
-Actionable patterns from Boris Cherny (Head of Claude Code at Anthropic) and the Claude Code team — extracted from his public threads, the team's internal practices, and Anthropic's official best practices documentation. Every pattern here earned its place by demonstrating measurable impact on output quality or workflow speed.
+Actionable patterns from Boris Cherny (Head of Claude Code at Anthropic) and the Claude Code team — extracted from his public threads, the team's internal practices, and Anthropic's official best practices documentation. Patterns selected based on observed impact on output quality or workflow speed.
 
 ---
 
